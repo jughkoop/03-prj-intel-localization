@@ -1,0 +1,168 @@
+/* Base styles */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #101820;
+	background: #f4f7fb;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+/* Header / Hero */
+header {
+	background: linear-gradient(135deg, #003061 0%, #0087d6 100%);
+	color: #ffffff;
+	padding: 40px 20px 50px;
+	text-align: center;
+}
+
+header div {
+	max-width: 900px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 26px;
+}
+
+header img {
+	width: 100px;
+	height: auto;
+	margin-bottom: 12px;
+}
+
+header h1 {
+	margin: 0;
+	font-size: 3rem;
+}
+
+header .hero-divider {
+	width: 80px;
+	height: 4px;
+	border-radius: 999px;
+	background: #6fd6ff;
+}
+
+header p {
+	margin: 0;
+	max-width: 650px;
+	line-height: 1.5;
+}
+
+/* Timeline cards */
+section {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 20px;
+	padding: 30px 20px 40px;
+	overflow-x: auto; /* Horizontal scroll on desktop */
+	justify-content: flex-start;
+	scrollbar-width: none; /* Firefox hide scrollbar */
+	scroll-snap-type: x mandatory;
+	scroll-padding: 20px;
+}
+
+section::-webkit-scrollbar {
+	display: none; /* Chrome/Safari/Edge hide scrollbar */
+}
+
+section div {
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 16px;
+	box-shadow: 0 10px 25px rgba(16, 24, 32, 0.12);
+	min-width: 270px;
+	max-width: 290px;
+  max-height: 250px;
+	flex: 0 0 290px;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+	scroll-snap-align: start;
+}
+
+section div:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 14px 32px rgba(16, 24, 32, 0.18);
+}
+
+section div .card-media {
+	position: relative;
+	overflow: hidden;
+	line-height: 0;
+}
+
+section div .card-media img {
+	width: 100%;
+	height: 165px;
+	object-fit: cover;
+}
+
+/* Fit specific images without cropping */
+section div .card-media img.fit-contain {
+	object-fit: contain;
+	background: #ffffff;
+}
+
+section div h2 {
+	margin: 16px 16px 6px;
+	color: #0071c5;
+	font-size: 1.3rem;
+}
+
+section div h3 {
+	margin: 0 16px 16px;
+	font-size: 1rem;
+}
+
+section div .card-media p {
+	position: absolute;
+	inset: 0;
+	margin: 0;
+	padding: 16px;
+	background: rgba(0, 113, 197, 0.95);
+	color: #ffffff;
+	font-size: 0.9rem;
+	line-height: 1.5;
+	opacity: 0;
+	transform: translateY(12px);
+	transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth hover reveal */
+}
+
+section div:hover .card-media p {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Mobile stacking */
+@media (max-width: 768px) {
+	section {
+		flex-direction: column;
+		overflow-x: visible; /* No horizontal scroll on smaller screens */
+	}
+
+	section div {
+		max-width: 100%;
+		width: 100%;
+	}
+
+	section div .card-media p {
+		font-size: 1.1rem;
+	}
+}
+
+/* Footer hint */
+body > p {
+	text-align: center;
+	margin: 10px 0 30px;
+	color: #3a4a5b;
+}
